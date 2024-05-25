@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using SmartCloud.Components.Pages
+<table class="table">
+    <thead>
+    <tr>
+        @* <th></th> *@
+        <th>OS</th>
+        <th>OS Version</th>
+        <th>Java Version</th>
+        <th>Order</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var permutation in Permutations)
+    {
+        <tr>
+            @* <td> *@
+            @*     <input type="checkbox" @onchange="OrderChecked"> *@
+            @* </td> *@
+            <td>@permutation.Os</td>
+            <td>@permutation.OsVersion</td>
+            <td>
+                <Dropdown TItem="OrderPermutation" OnSelected="JavaVersionOnSelected">
+                    <InitialTip>@JavaVersions[0]</InitialTip>
+                    <ChildContent>
+                        @foreach (var javaVersion in JavaVersions)
+                        {
+                            <DropdownListItem Item="@permutation" Value="@javaVersion.ToString()">@javaVersion</DropdownListItem>
+                        }
+                    </ChildContent>
+                </Dropdown>
+            </td>
+            <td>
+                <button class="btn btn-light border-0 shadow-none" @onclick="_ => HandleOnOrder(permutation)">Order</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@code {
+    [Parameter] public List<OrderPermutation>? Permutations { get; set; }
+    [Parameter] public int[]? JavaVersions { get; set; }
+    [Parameter] public EventCallback<OrderPermutation> OnOrder { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Permutations ??= DefaultValues.GetAll();
+        JavaVersions ??= DefaultValues.SupportedJavaVersions;
+    }
+
+    private void JavaVersionOnSelected(Tuple<OrderPermutation, string> args)
+    {
+        args.Item1.Jv = int.Parse(args.Item2);
+        StateHasChanged();
+    }
+
+    private void OrderChecked(ChangeEventArgs changeEventArgs)
+    {
+    }
+
+    private async Task HandleOnOrder(OrderPermutation orderPermutation)
+    {
+        await OnOrder.InvokeAsync(orderPermutation);
+    }
+
+}

@@ -1,0 +1,15 @@
+﻿@page "/gcp"
+
+<h1>
+    <span class="bi gcp-page-icon ms-3"></span>
+</h1>
+
+<PermutationsTable OnOrder="HandleOrder"></PermutationsTable>
+
+@code
+{
+    private void HandleOrder(OrderPermutation permutation)
+    {
+        Console.WriteLine($"Ordering Machine in GCP, {permutation}");
+    }
+}

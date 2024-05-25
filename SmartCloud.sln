@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33626.354
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCloud", "SmartCloud\SmartCloud.csproj", "{E177A50A-D983-49C6-AC59-EC5E33D4AB08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E177A50A-D983-49C6-AC59-EC5E33D4AB08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E177A50A-D983-49C6-AC59-EC5E33D4AB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E177A50A-D983-49C6-AC59-EC5E33D4AB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E177A50A-D983-49C6-AC59-EC5E33D4AB08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {764E1E84-61FE-4460-AD46-779C42635BED}
+	EndGlobalSection
+EndGlobal
