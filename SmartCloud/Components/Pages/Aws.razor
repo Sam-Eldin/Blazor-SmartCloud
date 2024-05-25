@@ -1,7 +1,7 @@
 ﻿@page "/aws"
-@using Blazored.Toast.Configuration
 @inject Jenkins jenkins
 @inject IToastService toastService
+
 <h1>
     <span class="bi aws-page-icon ms-3"></span>
 </h1>
@@ -17,13 +17,15 @@
         Console.WriteLine($"Ordering Machine in AWS, {permutation}");
         try
         {
-            // await jenkins.OrderPermutation(permutation);
-            toastService.ShowSuccess("Successfully Ordered Machine");
+            toastService.ShowInfo("Sending your order on a tasty adventure! 🚀");
+            await jenkins.OrderPermutation(permutation);
+            toastService.ShowSuccess("Your order is getting a tan in the kitchen! 😎🔥");
+            // toastService.ShowError("Uh-oh! Your order got a little too toasty and turned into a crispy critter. 💆🔥  ");
         }
         catch (Exception)
         {
             _errors += 1;
-            toastService.ShowError("Failed To Order Machine");
+            toastService.ShowError("Uh-oh! Your order got a little too toasty and turned into a crispy critter. 💆🔥");
             Console.WriteLine($"Failed to request machine, errors {_errors}");
         }
     }

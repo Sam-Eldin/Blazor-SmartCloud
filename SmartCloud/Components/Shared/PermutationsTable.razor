@@ -1,12 +1,6 @@
-﻿@using Microsoft.AspNetCore.Components.Web
-@using SmartCloud.Components.Pages
-@using Blazored.Toast
-@using Blazored.Toast.Configuration
-
-<table class="table">
+﻿<table class="table">
     <thead>
     <tr>
-        @* <th></th> *@
         <th>OS</th>
         <th>OS Version</th>
         <th>Java Version</th>
@@ -17,13 +11,10 @@
     @foreach (var permutation in Permutations)
     {
         <tr>
-            @* <td> *@
-            @*     <input type="checkbox" @onchange="OrderChecked"> *@
-            @* </td> *@
             <td>@permutation.Os</td>
             <td>@permutation.OsVersion</td>
             <td>
-                <Dropdown TItem="OrderPermutation" OnSelected="JavaVersionOnSelected">
+                <SmartCloud.Components.Shared.Dropdown TItem="OrderPermutation" OnSelected="JavaVersionOnSelected">
                     <InitialTip>@JavaVersions[0]</InitialTip>
                     <ChildContent>
                         @foreach (var javaVersion in JavaVersions)
@@ -31,7 +22,7 @@
                             <DropdownListItem Item="@permutation" Value="@javaVersion.ToString()">@javaVersion</DropdownListItem>
                         }
                     </ChildContent>
-                </Dropdown>
+                </SmartCloud.Components.Shared.Dropdown>
             </td>
             <td>
                 <button class="btn btn-light border-0 shadow-none" @onclick="_ => HandleOnOrder(permutation)">Order</button>
@@ -42,14 +33,14 @@
 </table>
 
 @code {
-    [Parameter] public List<OrderPermutation>? Permutations { get; set; }
-    [Parameter] public int[]? JavaVersions { get; set; }
+    [Parameter] public List<OrderPermutation> Permutations { get; set; } = null!;
+    [Parameter] public int[] JavaVersions { get; set; } = null!;
     [Parameter] public EventCallback<OrderPermutation> OnOrder { get; set; }
 
     protected override void OnParametersSet()
     {
-        Permutations ??= DefaultValues.GetAll();
-        JavaVersions ??= DefaultValues.SupportedJavaVersions;
+        Permutations = DefaultValues.GetAll();
+        JavaVersions = DefaultValues.SupportedJavaVersions;
     }
 
     private void JavaVersionOnSelected(Tuple<OrderPermutation, string> args)

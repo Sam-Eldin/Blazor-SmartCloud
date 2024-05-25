@@ -1,4 +1,4 @@
-﻿namespace SmartCloud.Shared;
+﻿namespace SmartCloud.Components.Shared;
 
 public class OrderPermutation(string os, string osVersion)
 {

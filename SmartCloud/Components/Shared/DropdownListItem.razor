@@ -1,0 +1,18 @@
+﻿@typeparam TItem
+
+<a class="dropdown-item" Item="@Item"
+   @onclick="_ => Dropdown.HandleSelect(Item, ChildContent, Value)">
+    @ChildContent(Item)
+</a>
+
+@code {
+
+    [CascadingParameter(Name = "Dropdown")]
+    public required Dropdown<TItem> Dropdown { get; set; }
+
+    [Parameter] public required TItem Item { get; set; }
+    [Parameter] public required string Value { get; set; }
+
+    [Parameter] public required RenderFragment<TItem> ChildContent { get; set; }
+
+}

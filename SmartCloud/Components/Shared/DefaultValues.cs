@@ -1,4 +1,4 @@
-﻿namespace SmartCloud.Shared;
+﻿namespace SmartCloud.Components.Shared;
 
 public static class DefaultValues
 {
