@@ -5,9 +5,9 @@
 <h1>
     <span class="bi aws-page-icon ms-3"></span>
 </h1>
-<BlazoredToasts Position="ToastPosition.TopRight" Timeout="2" MaxToastCount="3"/>
 
 <PermutationsTable OnOrder="HandleOrder"></PermutationsTable>
+
 @code
 {
     private int _errors;
@@ -17,7 +17,7 @@
         Console.WriteLine($"Ordering Machine in AWS, {permutation}");
         try
         {
-            await jenkins.OrderPermutation(permutation);
+            // await jenkins.OrderPermutation(permutation);
             toastService.ShowSuccess("Successfully Ordered Machine");
         }
         catch (Exception)
