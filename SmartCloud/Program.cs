@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using SmartCloud.Components;
 using SmartCloud.Services;
 

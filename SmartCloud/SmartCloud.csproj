@@ -10,11 +10,5 @@
       <PackageReference Include="Blazor.Bootstrap" Version="2.2.0" />
       <PackageReference Include="Blazored.Toast" Version="4.2.1" />
     </ItemGroup>
-
-    <ItemGroup>
-      <AdditionalFiles Include="Components\Shared\Dropdown.razor" />
-      <AdditionalFiles Include="Components\Shared\DropdownListItem.razor" />
-      <AdditionalFiles Include="Components\Shared\PermutationsTable.razor" />
-    </ItemGroup>
-
+    
 </Project>
