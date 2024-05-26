@@ -20,13 +20,13 @@
         {
             toastService.ShowInfo("Sending your order on a tasty adventure! 🚀");
             await jenkins.OrderPermutation(permutation);
-            toastService.ShowSuccess("Your order is getting a tan in the kitchen! 😎🔥");
-            // toastService.ShowError("Uh-oh! Your order got a little too toasty and turned into a crispy critter. 💆🔥  ");
+            toastService.ShowSuccess("Your order is getting a tan in the kitchen! 🍜🔥");
+            toastService.ShowError("Uh-oh! Your order got a little too toasty and turned into a crispy critter. ☠️🔥");
         }
         catch (Exception)
         {
             _errors += 1;
-            toastService.ShowError("Uh-oh! Your order got a little too toasty and turned into a crispy critter. 💆🔥");
+            toastService.ShowError("Uh-oh! Your order got a little too toasty and turned into a crispy critter. ☠️🔥");
             Console.WriteLine($"Failed to request machine, errors {_errors}");
         }
     }

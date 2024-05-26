@@ -4,7 +4,7 @@ public class OrderPermutation(string os, string osVersion)
 {
     public string Os { get; } = os;
     public string OsVersion { get; } = osVersion;
-    public int Jv { get; set; } = DefaultValues.SupportedJavaVersions[0];
+    public string Jv { get; set; } = DefaultValues.SupportedJavaVersions[0];
 
     public override string ToString()
     {
@@ -17,7 +17,7 @@ public class OrderPermutation(string os, string osVersion)
         {
             {"OS", Os},
             {"Os Version", OsVersion},
-            {"Java Version", Jv.ToString()},
+            {"Java Version", Jv},
         };
     }
 }

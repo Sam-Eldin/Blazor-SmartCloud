@@ -1,7 +1,7 @@
 ﻿<table class="table">
     <thead>
     <tr>
-        <th>OS</th>
+        <th>OS Platform</th>
         <th>OS Version</th>
         <th>Java Version</th>
         <th>Order</th>
@@ -34,18 +34,18 @@
 
 @code {
     [Parameter] public List<OrderPermutation> Permutations { get; set; } = null!;
-    [Parameter] public int[] JavaVersions { get; set; } = null!;
-    [Parameter] public EventCallback<OrderPermutation> OnOrder { get; set; }
+    [Parameter] public string[] JavaVersions { get; set; } = null!;
+    [Parameter] public required EventCallback<OrderPermutation> OnOrder { get; set; }
 
     protected override void OnParametersSet()
     {
-        Permutations = DefaultValues.GetAll();
-        JavaVersions = DefaultValues.SupportedJavaVersions;
+        Permutations ??= DefaultValues.GetAll();
+        JavaVersions ??= DefaultValues.SupportedJavaVersions;
     }
 
     private void JavaVersionOnSelected(Tuple<OrderPermutation, string> args)
     {
-        args.Item1.Jv = int.Parse(args.Item2);
+        args.Item1.Jv = args.Item2;
         StateHasChanged();
     }
 
